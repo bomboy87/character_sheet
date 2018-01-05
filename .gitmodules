@@ -1,0 +1,6 @@
+[submodule "safety-orange"]
+	path = safety-orange
+	url = git@github.com:safety-orange/Imports-for-MPMB-s-Character-Sheet.git
+[submodule "mpmb"]
+	path = mpmb
+	url = git@github.com:morepurplemorebetter/MPMBs-Character-Record-Sheet.git
