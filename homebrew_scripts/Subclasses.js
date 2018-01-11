@@ -92,3 +92,120 @@ ClassSubList["archaeologist"] = {
     }
 };
 ClassList.rogue.subclasses[1].push("archaeologist");
+
+// Fighter: The Gunslinger
+ClassSubList["gunslinger"] = {
+    regExpSearch : /^(?=.*fighter)(?=.*gunslinger).*$/i,
+    subname : "Gunslinger",
+    source : ["HB: Subclasses", 7],
+    fullname : "Fighter (Gunslinger)",
+    features : {
+        "subclassfeature1" : {
+            name : "Firearm Proficiency",
+            source : ["HB: Subclasses", 1],
+            minlevel : 3,
+			description : desc([
+				"I gain proficiency in firearms",
+				]),
+			weaponprofs : [false, false, "firearms"],
+        },
+        "subclassfeature2" : {
+            name : "Gunsmith",
+            source : ["HB: Subclasses", 1],
+            minlevel : 3,
+			description : desc([
+				"I gain proficiency in Tinker's Tools",
+				"I can use them to craft ammunition, repair damaged firearms, or create new ones"
+				]),
+			toolProfs : ["Tinker's Tools"],
+        },
+        "subclassfeature3" : {
+            name : "Grit",
+            source : ["HB: Subclasses", 1],
+            minlevel : 3,
+			description : desc([
+				"I have a number of grit points I can spend on various shot attacks with my firearms",
+				"An attack can only be affected by a single shot feature",
+				"In addition to a short or long rest, I can recover grit points by getting a killing blow or a critical hit with a firearm"
+				]),
+			usages : "Wis mod per ",
+			usagescalc : "event.value = Math.max(1, tDoc.getField(\"Wis Mod\").value);",
+			recovery : "short rest",
+        },
+        "subclassfeature4" : {
+            name : "Deadeye Shot",
+            source : ["HB: Subclasses", 1],
+            minlevel : 3,
+			action : ["action", ""],
+			description : desc([
+				"I can spend 1 grit pt to gain adv on next attack roll w/ a firearm"
+				]),
+        },
+        "subclassfeature5" : {
+            name : "Violent Shot",
+            source : ["HB: Subclasses", 1],
+            minlevel : 7,
+			action : ["action", ""],
+            description : desc([
+				"I can spend 1 or more grit pts before an attack roll",
+				"Each grit pt spent increases the firearm misfire score by +2",
+				"If the atk hits, I can roll 1 additional wpn dmg die per grit pt spent"
+				]),
+        },
+		"subclassfeature6" : {
+            name : "Trick Shot",
+            source : ["HB: Subclasses", 1],
+            minlevel : 10,
+			action : ["action", ""],
+            description : desc([
+				"I can spend 1 grit pt before an attack roll to target a specific spot on a creature",
+				"The Trick Shot DC is 8 + my proficiency bonus + Dex mod",
+				"Head: Target makes a Con save or suffers disadv. til end of next turn",
+				"Arms: Target makes a Str save or drop 1 held item of my choice",
+				"Torso: Target is pushed 10 ft away from me",
+				"Legs/Wngs: Target makes a Str save or gets knocked prone"
+				]),
+        },
+		"subclassfeature7" : {
+            name : "Lightning Reload",
+            source : ["HB: Subclasses", 1],
+            minlevel : 15,
+			action : ["bonus action", ""],
+            description : desc([
+				"I can reload any firearm as a bonus action"
+				]),
+        },
+		"subclassfeature8" : {
+            name : "Piercing Shot",
+            source : ["HB: Subclasses", 1],
+            minlevel : 15,
+			action : ["action", ""],
+            description : desc([
+				"I can spend 1 grit pt before an attack roll with a firearm that does piercing dmg",
+				"On a hit, I make an attack roll against every creature in a line directly behind target within range",
+				"Only the 1st attack can misfire"
+				]),
+        },
+		"subclassfeature9" : {
+            name : "Vicious Intent",
+            source : ["HB: Subclasses", 1],
+            minlevel : 18,
+            description : desc([
+				"I can crit with a firearm on a roll of 19-20"
+				]),
+			calcChanges : {
+					atkAdd : ["if (!isSpell && classes.known.fighter && classes.known.fighter.level > 17 && (/firearm/i).test(theWea.list) && !CritChance) {var CritChance = 19; fields.Description += (fields.Description ? '; ' : '') + 'Crit on 19-20'; }; ", "My weapon attacks score a critical on a to hit roll of both 19 and 20."]
+				}
+        },
+		"subclassfeature10" : {
+            name : "Hemorrhaging Critical",
+            source : ["HB: Subclasses", 1],
+            minlevel : 18,
+            description : desc([
+				"On a critical from firearm, the target suffers half the damage from the atk at the end of its next turn"
+				]),
+        },
+	}
+}
+
+ClassList["fighter"].subclasses[1].push("gunslinger");
