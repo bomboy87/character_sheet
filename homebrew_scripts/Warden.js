@@ -734,6 +734,6 @@ ClassSubList["primal focus"] = {
 SourceList["HB: Warden"] = {
     name : "Homebrew: Warden Class",
     abbreviation : "HB: Warden",
-    group : "Homebrew by /u/layhnet",
+    group : "Homebrew",
     url : "https://drive.google.com/file/d/0Bz74Lu7ft9syNkdUR0dCLVhzTmc/view"
 };
