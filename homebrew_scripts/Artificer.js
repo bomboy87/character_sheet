@@ -31,35 +31,20 @@ var iFileName = "hb_Artificer.js";
 RequiredSheetVersion(12.999);
 
 //Artificer Spell List
-[//level 0 (cantrips)
-	"artificer's weapon", "booming blade", "chill touch", "create bonfire", "friends", "frostbite", "green-flame blade", "guidance", "light", "lightning lure", "magic stone", "mending", "poison spray", "sword burst", "true strike",
-
-	//level 1
-	"alarm", "armor of agathys", "cause fear", "charm person", "comprehend languages", "cure wounds", "detect poison and disease", "disguise self", "expeditious retreat", "faerie fire", "false life", "feather fall", "fog cloud", "illusory script", "jump", "longstrider", "mage armor", "protection from evil and good", "shield", "thunderwave", "unseen servant",
+[//level 1
+	"alarm", "armor of agathys", "cause fear", "charm person", "comprehend languages", "cure wounds", "detect poison and disease", "disguise self", "entangle", "expeditious retreat", "faerie fire", "false life", "feather fall", "fog cloud", "illusory script", "jump", "longstrider", "mage armor", "protection from evil and good", "shield", "sleep", "thunderwave", "unseen servant",
 
 	//level 2
-	"alter self", "arcane lock", "barkskin", "blindness/deafness" , "blur", "calm emotions", "darkness", "darkvision", "earthbind", "enhance ability", "enlarge/reduce", "enthrall", "hold person", "invisibility", "levitate", "mirror image", "misty step", "ray of enfeeblement", "rope trick", "see invisibility", "spider climb", "suggestion", "web", "zone of truth",
+	"alter self", "arcane lock", "barkskin", "blindness/deafness" , "blur", "calm emotions", "darkness", "darkvision", "earthbind", "enhance ability", "enlarge/reduce", "enthrall", "find traps", "hold person", "invisibility", "levitate", "mirror image", "misty step", "ray of enfeeblement", "rope trick", "see invisibility", "spider climb", "suggestion", "web", "zone of truth",
 
 	//level 3
-	"bestow curse", "counterspell", "dispel magic", "enemies abound", "fly", "gaseous form", "haste", "hypnotic pattern", "life transference", "magic circle", "major image", "remove curse", "thunder step", "tongues", "vampiric touch", "wall of sand", "wall of water",
+	"bestow curse", "counterspell", "dispel magic", "enemies abound", "fly", "gaseous form", "haste", "hypnotic pattern", "life transference", "magic circle", "major image", "remove curse", "slow", "thunder step", "tongues", "vampiric touch", "wall of sand", "wall of water",
 
 	//level 4
-	"arcane eye", "banishment", "blight", "charm monster", "compulsion", "confusion", "dimension door", "elemental bane", "fabricate", "fire shield", "freedom of movement", "greater invisibility", "hallucinatory terrain", "shadow of moil", "stone shape", "stoneskin", "wall of fire",
+	"antilife shell", "arcane eye", "banishment", "blight", "charm monster", "compulsion", "confusion", "dimension door", "elemental bane", "fabricate", "fire shield", "freedom of movement", "greater invisibility", "hallucinatory terrain", "shadow of moil", "stone shape", "stoneskin", "wall of fire",
 
 	//level 5
-	"contact other plane", "dispel evil and good", "dominate person", "dream", "enervation", "far step", "hold monster", "mass cure wounds", "negative energy flood", "passwall", "scrying", "skill empowerment", "synaptic static", "teleportation circle", "wall of force", "wall of light", "wall of stone",
-
-	//level 6
-	"arcane gate", "create homunclus", "globe of invulnerability", "guards and wards", "flesh to stone", "harm", "heal", "investiture of flame", "investiture of ice", "investiture of stone", "investiture of wind", "magic jar", "programmed illusion", "true seeing", "wall of ice", "wind walk", "word of recall",
-
-	//level 7
-	"etherealness", "forcecage", "mordenkainen's magnificent mansion", "mordenkainen's sword", "plane shift", "project image", "regenerate", "reverse gravity", "sequester", "simulacrum", "teleport",
-	
-	//level 8
-	"antimagic field", "antipathy/sympathy", "clone", "control weather", "demiplane", "dominate monster", "power word stun",
-
-	//level 9
-	"foresight", "gate", "imprisonment", "power word heal", "power word kill", "prismatic wall", "shapechange", "time stop", "true polymorph"
+	"contact other plane", "dispel evil and good", "dominate person", "dream", "enervation", "far step", "hold monster", "mass cure wounds", "negative energy flood", "passwall", "scrying", "skill empowerment", "synaptic static", "teleportation circle", "wall of force", "wall of light", "wall of stone"
 ].forEach(function (artificerSpells) {
 	if (SpellsList[artificerSpells]) SpellsList[artificerSpells].classes.push("artificer");
 });
@@ -84,47 +69,83 @@ ClassList["artificer"] = {
 		[true, true, false, false]
 	],
 	weapons : [
-		[true, false],
-		[true, false]
+		[true, true],
+		[true, true]
 	],
-	equipment : "Artificer starting equipment:\n \u2022 Any two simple weapons or any martial weapon (if proficient);\n \u2022 a light crossbow and 20 bolts;\n \u2022 scale mail -or- studded leather armor;\n \u2022 Thieves' tools, formula book, and a dungeoneer's pack; \n\nAlternatively, choose 4d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
-	subclasses : ["Scientific Approach", ["inventor", "physician", "warsmith"]],
+	equipment : "Artificer starting equipment:\n \u2022 Any two simple weapons or any martial weapon;\n \u2022 a light crossbow and 20 bolts;\n \u2022 scale mail -or- studded leather armor;\n \u2022 Thieves' tools, formula book, and a dungeoneer's pack; \n\nAlternatively, choose 4d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
+	subclasses : ["Scientific Study", ["constructs", "medicine", "warsmithing"]],
 	attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 	abilitySave : 4,
-	spellcastingFactor : 1,
+	spellcastingFactor : 2,
 	spellcastingTable : [
+		[0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[2, 0, 0, 0, 0, 0, 0, 0, 0],
 		[3, 0, 0, 0, 0, 0, 0, 0, 0],
+		[3, 0, 0, 0, 0, 0, 0, 0, 0],
+		[4, 2, 0, 0, 0, 0, 0, 0, 0],
 		[4, 2, 0, 0, 0, 0, 0, 0, 0],
 		[4, 3, 0, 0, 0, 0, 0, 0, 0],
+		[4, 3, 0, 0, 0, 0, 0, 0, 0],
+		[4, 3, 2, 0, 0, 0, 0, 0, 0],
 		[4, 3, 2, 0, 0, 0, 0, 0, 0],
 		[4, 3, 3, 0, 0, 0, 0, 0, 0],
+		[4, 3, 3, 0, 0, 0, 0, 0, 0],
+		[4, 3, 3, 1, 0, 0, 0, 0, 0],
 		[4, 3, 3, 1, 0, 0, 0, 0, 0],
 		[4, 3, 3, 2, 0, 0, 0, 0, 0],
+		[4, 3, 3, 2, 0, 0, 0, 0, 0],
+		[4, 3, 3, 3, 1, 0, 0, 0, 0],
 		[4, 3, 3, 3, 1, 0, 0, 0, 0],
 		[4, 3, 3, 3, 2, 0, 0, 0, 0],
-		[4, 3, 3, 3, 2, 1, 0, 0, 0],
-		[4, 3, 3, 3, 2, 1, 0, 0, 0],
-		[4, 3, 3, 3, 2, 1, 1, 0, 0],
-		[4, 3, 3, 3, 2, 1, 1, 0, 0],
-		[4, 3, 3, 3, 2, 1, 1, 1, 0],
-		[4, 3, 3, 3, 2, 1, 1, 1, 0],
-		[4, 3, 3, 3, 2, 1, 1, 1, 1],
-		[4, 3, 3, 3, 3, 1, 1, 1, 1],
-		[4, 3, 3, 3, 3, 2, 1, 1, 1],
-		[4, 3, 3, 3, 3, 2, 2, 1, 1]
+		[4, 3, 3, 3, 2, 0, 0, 0, 0]
 	],
 	spellcastingKnown : {
-		cantrips : [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 		spells : "book",
 		prepared : true
 	},
 	features : {
 		"feature0" : {
-			name : "Arcane Formulas",
+			name : "Signature Weapon",
 			source : ["HB: Artificer", 3],
 			minlevel : 1,
+			description : desc([
+				"I craft a signature weapon only I can wield",
+				"It uses Constitution for all attack and damage rolls and counts as magical",
+				"I can expend a 2nd lvl formula to make it a +1 for 8 hrs, a 3rd lvl for +2 and 10 hrs or a 4th lvl for +3 that lasts til long rest",
+				"To set a weapon as your Signature one, add 'Signature' to the name of the weapon",
+				"If broken or stolen I can make a new one w/ 8 hrs and 1 hit die"
+			]),
+			calcChanges : {
+				atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) { fields.Mod = What('Con Mod') > What(AbilityScores.abbreviations[fields.Mod - 1] + ' Mod') ? 3 : fields.Mod ; fields.Description += (fields.Description ? '; ' : '') + ', the atk is magical'; }; ", "If I include the word 'Signature' in a weapon's name, it gets treated as my the weapon I imbued to use Constitution instead of Strength or Dexterity, if my Constitution modifier is higher than it would otherwise use."]
+			},
+			action : ["action", ""],
+		},
+		"feature1" : {
+			name : "Magic Item Analysis",
+			source : ["HB: Artificer", 3],
+			minlevel : 1,
+			action : ["action", ""],
+			description : desc([
+				"You know the artificer spells detect magic and identify and can cast as rituals",
+				"You don't need to provide material components when casting identify with this"
+			]),
+			spellcastingBonus : [{
+				name : "Magic Item Analysis",
+				spells : ["detect magic"],
+				selection : ["detect magic"],
+				firstCol : "(R)"
+			}, {
+				name : "Magic Item Analysis",
+				spells : ["identify"],
+				selection : ["identify"],
+				firstCol : "(R)"
+			}]
+		},
+		"feature2" : {
+			name : "Arcane Formulas",
+			source : ["HB: Artificer", 3],
+			minlevel : 2,
 			description : desc([
 				"I can cast prepared artificer spells via formulas, using Int as my spellcasting ability",
 				"During a short rest I can transform one formula into another of equal level",
@@ -132,59 +153,28 @@ ClassList["artificer"] = {
 			]),
 			action : ["action", ""],
 		},
-		"feature1" : {
-			name : "Artificer's Weapon",
-			source : ["HB: Artificer", 4],
-			minlevel : 1,
-			description : desc([
-				"I gain the Artificer's Weapon cantrip",
-				"When making a weapon attack using Artificer's Weapon cantrip, I can use it with Int",
-				"To set a weapon as your Artificer one, add 'Artificer's' to the name of the weapon"
-			]),
-			spellcastingBonus : [{
-				name : "Artificer's Weapon",
-				spells : ["artificer's weapon"],
-				selection : ["artificer's weapon"]
-			}],
-			calcChanges : {
-				atkAdd : ["if ((/Artificer's/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) { fields.Mod = What('Int Mod') > What(AbilityScores.abbreviations[fields.Mod - 1] + ' Mod') ? 4 : fields.Mod ; fields.Description += (fields.Description ? '; ' : '') + ', the atk is magical, and has addtl effects per Artificers Weapon cantrip'; }; ", "If I include the word 'Artificers' in a weapon's name, it gets treated as my the weapon I imbued to use Intelligence instead of Strength or Dexterity, if my Intelligence modifier is higher than it would otherwise use."]
-			},
-			action : ["action", ""],
-			eval : "AddWeapon(\"Artificer's Weapon\")",
-			removeeval : "RemoveWeapon(\"Artificer's Weapon\")",
-		},
-		"feature2" : {
-			name : "Magic Item Analysis",
-			source : ["HB: Artificer", 4],
-			minlevel : 1,
-			action : ["action", ""],
-			description : desc([
-				"You know the artificer spells detect magic and identify and can cast as rituals",
-				"You don't need to provide material components when casting identify with this"
-			]),
-		},
 		"feature3" : {
-			name : "Scientific Approach",
-			source : ["HB: Artificer", 4],
-			minlevel : 2,
-			description : desc([
-				"Choose a Scientific Approach you hone yourself to and put it in the \"Class\" field",
-				"Choose either the Inventor, Physician, or Warsmith"
-			]),
-		},
-		"feature4" : {
 			name : "Arcane Empowerment",
 			source : ["HB: Artificer", 4],
-			minlevel : 3,
+			minlevel : 2,
 			recovery : "short rest",
 			usages: 1,
 			description : desc([
 				"You can spend 10 mins with an object to empower it in 1 of 2 ways",
-				"An implement or a weapon can be empowered only once per day in each of these ways.",
+				"An item can be empowered only once per day in each of these ways.",
 				"See the \"Notes\" page for more details"
 			]),
 			eval : "AddString(\"Extra.Notes\", \"Arcane Empowerment:\\n\\u25C6 Impart Energy (Arcane Empowerment 3, HB: Artificer 4)\\n   You recharge the power of a magic item that has a single use per long rest or until dawn.\\n\\u25C6 Augment Energy (Arcane Empowerment 3, HB: Artificer 4)\\n   I can infuse a weapon or an implement with a reservoir of energy that lasts until the end of my next long rest or until it is expended. The wielder of the item can use a free action before making an attack roll to expend the reservoir of energy to gain advantage to the next attack roll made with this item.\", true);",
 			removeeval : "RemoveString(\"Extra.Notes\", \"Arcane Empowerment:\\n\\u25C6 Impart Energy (Arcane Empowerment 3, HB: Artificer 4)\\n   You recharge the power of a magic item that has a single use per long rest or until dawn.\\n\\u25C6 Augment Energy (Arcane Empowerment 3, HB: Artificer 4)\\n   I can infuse a weapon or an implement with a reservoir of energy that lasts until the end of my next long rest or until it is expended. The wielder of the item can use a free action before making an attack roll to expend the reservoir of energy to gain advantage to the next attack roll made with this item.\", true);",
+		},
+		"feature4" : {
+			name : "Scientific Study",
+			source : ["HB: Artificer", 4],
+			minlevel : 3,
+			description : desc([
+				"Choose a Scientific Study you hone yourself to and put it in the \"Class\" field",
+				"Choose either the Study of Constructs, Medicine, or Warsmithing"
+			]),
 		},
 		"feature5" : {
 			name : "Energy Transference",
@@ -206,96 +196,219 @@ ClassList["artificer"] = {
 				"Use the \"Choose Features\" button above to add Transitive Properties to the third page",
 				"Whenever I gain an artificer level, I can replace an transitive property I know with another"
 				]),
-			additional : ["", "", "", "", "1 property known", "1 property known", "2 properties known", "2 properties known", "2 properties known", "2 properties known", "2 properties known", "2 properties known", "3 properties known", "3 properties known", "3 properties known", "3 properties known", "3 properties known", "4 properties known", "4 properties known", "4 properties known"],
+			additional : ["", "", "", "", "1 property known", "1 property known", "2 properties known", "2 properties known", "2 properties known", "2 properties known", "3 properties known", "3 properties known", "3 properties known", "4 properties known", "4 properties known", "4 properties known", "4 properties known", "5 properties known", "5 properties known", "5 properties known"],
 			extraname : "Transitive Property",
-			extrachoices : ["Camouflaged (prereq: level 13 artificer)", "Commanding (prereq: level 12 artificer, inventor subclass)", "Constructive Feedback (prereq: inventor subclass)", "Forceful", "Frictionless", "Linked", "Power Armor (prereq: level 10 artificer, warsmith subclass)", "Ranged Sight", "Reactionary", "Room Reader", "Sensory Overload", "Surplus Healing (prereq: physician subclass)", "Translation Suite"],
-			"camouflaged (prereq: level 13 artificer)" : {
+			extrachoices : ["Aura Amplifier", "Barrier Boost (prereq: level 14, Warsmithing subclass)", "Camouflaged (prereq: level 14)", "Chronal Disrupter (prereq: level 19)", "Commanding (prereq: level 11, Constructs subclass)", "Constructive Feedback (prereq: Constructs subclass)", "Empowered Draining (prereq: level 14, Medicine subclass)", "Forceful", "Frictionless", "Infusion Booster (prereq: level 11, Medicine subclass)", "Linked", "Overclocked Construct (prereq: level 14, Constructs subclass)", "Power Armor (prereq: level 11, Warsmithing subclass)", "Neuralyzer (prereq: level 17)", "Ranged Sight", "Room Reader", "Sensory Overload", "Secondary Signature (prereq: Warsmithing subclass)", "Surplus Healing (prereq: Medicine subclass)", "Transdimensional (prereq: level 18)", "Translation Suite"],
+			"aura amplifier" : {
+				name : "Aura Amplifier",
+				description :  desc([
+					"Must be on a non-weapon item",
+					"My signature weapon bonus effects increase to a range of 10 ft"
+				]),
+				source : ["HB: Artificer", 9],
+				calcChanges : {
+					atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) {fields.Description = fields.Description.replace('5 ft', '10 ft');};", "My aura extends to 10 ft to buff my allies."]
+				}
+			},
+			"barrier boost (prereq: level 14, warsmithing subclass)" : {
+				name : "Camouflaged",
+				description :  desc([
+					"I can user my Arcane Barrier feature twice per short rest"
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "classes.known.artificer.level >= 14 && (/warsmithing/).test(classes.known.artificer.subclass)"
+			},
+			"camouflaged (prereq: level 14)" : {
 				name : "Camouflaged",
 				description : "\n   " + "I can cast Invisibility at-will on myself without expending a formula",
-				source : ["HB: Artificer", 5],
+				source : ["HB: Artificer", 9],
 				spellcastingBonus : {
 					name : "Camouflaged",
 					spells : ["invisibility"],
 					selection : ["invisibility"],
 					atwill : true
 				},
-				prereqeval : "classes.known.artificer.level >= 13"
+				prereqeval : "classes.known.artificer.level >= 14"
 			},
-			"commanding (prereq: level 12 artificer, inventor subclass)" : {
+			"chronal disrupter (prereq: level 19)" : {
+				name : "Chronal Disrupter",
+				description :  desc([
+					"I can cast Time Stop once per day using this item"
+				]),
+				source : ["HB: Artificer", 9],
+				spellcastingBonus : {
+					name : "Chronal Disrupter",
+					spells : ["time stop"],
+					selection : ["time stop"],
+					atwill : false
+				},
+				prereqeval : "classes.known.artificer.level >= 19"
+			},
+			"commanding (prereq: level 11, constructs subclass)" : {
 				name : "Commanding",
-				description : "\n   " + "You can cast the command spell at-will against constructs.",
-				source : ["HB: Artificer", 5],
+				description : desc([
+					"You can cast the command spell at-will against constructs."
+				]),
+				source : ["HB: Artificer", 9],
 				spellcastingBonus : {
 					name : "Commanding",
 					spells : ["command"],
 					selection : ["command"],
 					atwill : true
 				},
-				prereqeval : "classes.known.artificer.level >= 12 && (/inventor/).test(classes.known.artificer.subclass)"
+				prereqeval : "classes.known.artificer.level >= 11 && (/constructs/).test(classes.known.artificer.subclass)"
 			},
-			"constructive feedback (prereq: inventor subclass)" : {
+			"constructive feedback (prereq: constructs subclass)" : {
 				name : "Constructive Feedback",
-				description : "\n   " + "Your construct can communicate with you in a limited fashion only you understand via tones and sounds.",
-				source : ["HB: Artificer", 5],
-				prereqeval : "(/inventor/).test(classes.known.artificer.subclass)"
+				description : desc([
+					"Your construct can communicate with you in a limited fashion only you understand via tones and sounds."
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "(/constructs/).test(classes.known.artificer.subclass)"
+			},
+			"empowered draining (prereq: level 14, medicine subclass)" : {
+				name : "Empowered Draining",
+				description : desc([
+					"Must be on a weapon",
+					"Arcane Drain feature now restores temp HP equal to Int + full artificer level."
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "classes.known.artificer.level >= 14 && (/medicine/).test(classes.known.artificer.subclass)"
 			},
 			"forceful" : {
 				name : "Forceful",
-				description : "\n   " + "When you hit a creature w/ Artificer's Weapon cantrip, you can push 5ft",
-				source : ["HB: Artificer", 5],
+				description : desc([
+					"When you hit a creature w/ your Signature Weapon, you can push 5ft"
+				]),
+				source : ["HB: Artificer", 9],
 			},
 			"frictionless" : {
 				name : "Frictionless",
-				description : "\n   " + "Must be used on Boots" + "\n   " + "Increase your movement speed by 10 ft while wearing",
-				source : ["HB: Artificer", 5],
+				description : desc([
+					"Must be used footwear",
+					"Increase your movement speed by 10 ft while wearing"
+				]),
+				source : ["HB: Artificer", 9],
+			},
+			"infusion booster (prereq: level 11, medicine subclass)" : {
+				name : "Infusion Booster",
+				description : desc([
+					"Must be on gloves",
+					"Healing formulas provide extra temp hp equal to Con Mod + half Artificer level."
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "classes.known.artificer.level >= 11 && (/medicine/).test(classes.known.artificer.subclass)"
 			},
 			"linked" : {
 				name : "Linked",
-				description : "\n   " + "As a bonus action you can summon the piece of equipment to your hand" + "\n   " + "Equipment must be within line of sight and 100 ft",
+				description : desc([
+					"As a bonus action you can summon the piece of equipment to your hand",
+					"Equipment must be within line of sight and 100 ft"
+				]),
 				source : ["HB: Artificer", 5],
 			},
-			"power armor (prereq: level 10 artificer, warsmith subclass)" : {
+			"overclocked construct (prereq: level 14, constructs subclass)" : {
+				name : "Overclocked Construct",
+				description : desc([
+					"Must be on your construct",
+					"Construct mode change lasts until a long rest or a new mode selected."
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "classes.known.artificer.level >= 14 && (/constructs/).test(classes.known.artificer.subclass)"
+			},
+			"power armor (prereq: level 11, warsmithing subclass)" : {
 				name : "Power Armor",
-				description : "\n   " + "Must be used on Armor" + "\n   " + "I gain a +1 power bonus to AC while wearing this armor",
-				source : ["HB: Artificer", 5],
-				prereqeval : "classes.known.artificer.level >= 10 && (/warsmith/).test(classes.known.artificer.subclass)"
+				description :  desc([
+					"Must be used on Armor",
+					"I gain a +1 power bonus to AC while wearing this armor"
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "classes.known.artificer.level >= 11 && (/warsmithing/).test(classes.known.artificer.subclass)"
+			},
+			"neuralyzer (prereq: level 17)" : {
+				name : "Neuralyzer",
+				description :  desc([
+					"Must be something handheld",
+					"I can cast Power Word Stun once per day using this item"
+				]),
+				source : ["HB: Artificer", 9],
+				spellcastingBonus : {
+					name : "Neuralyzer",
+					spells : ["power word stun"],
+					selection : ["power word stun"],
+					atwill : false
+				},
+				prereqeval : "classes.known.artificer.level >= 17"
 			},
 			"ranged sight" : {
 				name : "Ranged Sight",
-				description : "\n   " + "Must be used on a ranged weapon, glasses or a helmet" + "\n   " + "Weapon attacks or perception checks made using this item double in range and long range" + "\n   " + "For example a longbow goes from 150/600 to 300/1200",
-				source : ["HB: Artificer", 5],
-			},
-			"reactionary" : {
-				name : "Reactionary",
-				description : "\n   " + "Must be a weapon" + "\n   " + "Your Artificer's Weapon cantrip can be used as a reaction during opportunity attacks with this weapon",
-				source : ["HB: Artificer", 5],
+				description : desc([
+					"Must be used on a ranged weapon, glasses or a helmet",
+					"Weapon attacks or perception checks made using this item double in range and long range",
+					"For example a longbow goes from 150/600 to 300/1200"
+				]),
+				source : ["HB: Artificer", 9]
 			},
 			"room reader" : {
 				name : "Room Reader",
-				description : "\n   " + "Must be used on glasses or a helmet" + "\n   " + "While wearing this piece you are considered proficient in Wisdom Ability (Insight) checks",
-				source : ["HB: Artificer", 5],
+				description : desc([
+					"Must be used on glasses or a helmet",
+					"While wearing this piece you are considered proficient in Wisdom Ability (Insight) checks"
+				]),
+				source : ["HB: Artificer", 9]
 			},
 			"sensory overload" : {
 				name : "Sensory Overload",
-				description : "\n   " + "Your piece can exhibit fanciful sensory changes to the area, you can cast prestidigitation at will",
-				source : ["HB: Artificer", 5],
+				description : desc([
+					"You can cast prestidigitation at will"
+				]),
+				source : ["HB: Artificer", 9],
 				spellcastingBonus : {
 					name : "Sensory Overload",
 					spells : ["prestidigitation"],
 					selection : ["prestidigitation"],
 					atwill : true
-				},
+				}
 			},
-			"surplus healing (prereq: physician subclass)" : {
+			"secondary signature (prereq: warsmithing subclass)" : {
 				name : "Surplus Healing",
-				description : "\n   " + "Must be used on Gloves" + "\n   " + "Excess healing done with a healing potion or arcane formula can be transferred to an adj. ally of the recipient",
-				source : ["HB: Artificer", 5],
-				prereqeval : "(/physician/).test(classes.known.artificer.subclass)"
+				description : desc([
+					"Must be a weapon",
+					"This weapon is now considered a second signature weapon."
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "(/warsmithing/).test(classes.known.artificer.subclass)"
+			},
+			"surplus healing (prereq: medicine subclass)" : {
+				name : "Surplus Healing",
+				description : desc([
+					"Must be used on Gloves",
+					"Excess healing done with a healing potion or arcane formula can be transferred to an adj. ally of the recipient"
+				]),
+				source : ["HB: Artificer", 9],
+				prereqeval : "(/medicine/).test(classes.known.artificer.subclass)"
+			},
+			"transdimensional (prereq: level 18)" : {
+				name : "Transdimensional",
+				description :  desc([
+					"I can cast Teleport once per day using this item"
+				]),
+				source : ["HB: Artificer", 9],
+				spellcastingBonus : {
+					name : "Transdimensional",
+					spells : ["teleport"],
+					selection : ["teleport"],
+					atwill : false
+				},
+				prereqeval : "classes.known.artificer.level >= 18"
 			},
 			"translation suite" : {
 				name : "Translation Suite",
-				description : "\n   " + "Must be used on glasses or a helmet" + "\n   " + "You can read all writing",
-				source : ["HB: Artificer", 5],
+				description : desc([
+					"Must be used on glasses or a helmet",
+					"You can read all writing"
+				]),
+				source : ["HB: Artificer", 9],
 			}
 		},
 		"feature7" : {
@@ -303,79 +416,90 @@ ClassList["artificer"] = {
 			source : ["HB: Artificer", 5],
 			minlevel : 6,
 			description : desc([
-				"Any spell with a casting time of 1 action can be infused in an item",
+				"Any formula with a casting time of 1 action can be infused in an item",
 				"Other creatures can activate the formula as an action",
-				"You can have a number of infused spells at one time equal to your Int Mod"
+				"You can have a number of infused formulas at one time equal to your Int Mod"
 			]),
 		},
 		"feature8" : {
-			name : "Carry the Remainder",
+			name : "Defuse Magic",
 			source : ["HB: Artificer", 5],
 			minlevel : 20,
 			recovery : "long rest",
 			description : desc([
-				"When I complete a long rest, I can keep unused formulas for the next day",
-				"These formulas can have a combined level equal or less than double Int Mod",
-				"These spells can't be higher than 6th lvl and don't count against your spells"
+				"I can spend 10 items with several magic items to recover spell slots up to my Int mod",
+				"Common magic items recover 1 spell slot, uncommon 2, rare 3, very rare 4, legendary 5",
+				"A magic item becomes inert and can't be infused until a long rest after"
 			]),
+			usagescalc : "event.value = Math.max(1, tDoc.getField(\"Con Mod\").value);",
+			usages: "Con mod per ",
+			recovery : "long rest"
 		}
 	}
 }
 
-//Subclass for Inventor
-ClassSubList["inventor"] = {
-	regExpSearch : /^(?=.*inventor).*$/i,
-	subname : "Inventor",
-	source : ["HB: Artificer", 7],
+//Subclass for Constructs
+ClassSubList["constructs"] = {
+	regExpSearch : /^(?=.*constructs).*$/i,
+	subname : "Study of Constructs",
+	source : ["HB: Artificer", 5],
 	spellcastingExtra : ["beast bond", "speak with animals", "zephyr strike", "beast sense", "shatter", "sending", "tiny servant", "conjure minor elementals", "locate creature", "animate objects", "conjure elemental", "transmute rock"],
 	features : {
 		"subclassfeature1" : {
 			name : "Innovative Master",
-			source : ["HB: Artificer", 7],
-			minlevel : 2,
+			source : ["HB: Artificer", 5],
+			minlevel : 3,
 			description : desc([
 				"Gain proficiency in Tinker's tools",
-				"If I already have Tinker's Tools, I gain expertise"
+				"If I already have Tinker's Tools, I gain expertise in them"
 			]),
+			eval : "if (CurrentProfs.tool[\"Tinker's Tools\"] && (/(tinker|tinkers).*(tool|tools)/i).test(What('Too Text'))) { Checkbox('Too Exp', true); }; ",
+			removeeval : "if (CurrentProfs.tool[\"Tinker's Tools\"] && (/tinker|tinkers).*(tool|tools)/i).test(What('Too Text'))) { Checkbox('Too Exp', false); }; "
 		},
 		"subclassfeature2" : {
 			name : "Inventive Measures",
-			source : ["HB: Artificer", 7],
-			minlevel : 2,
+			source : ["HB: Artificer", 5],
+			minlevel : 3,
 			description : desc([
-				"I gain mending as a bonus cantrip",
+				"I gain the mending cantrip",
 				"I can use mending to heal my loyal construct 1GP per HP",
 				"Arcane Formulas that target beasts function instead for constructs",
-				"Your Artificer's Weapon cantrip now gives each adj ally a +1 to hit on their next attack"
+				"Attacking with my signature weapon now gives allies within 5 ft a +1 to hit on their next attack"
 			]),
 			action : ["bonus action", ""],
 			calcChanges : {
-				atkAdd : ["if (theWea && (/artificer's weapon/i).test(theWea.name)) {fields.Description += ' & allies within 5ft get +1 to their next atk'; }; ", "Once on each of my turns when I hit a creature with my Artificer's Weapon cantrip, I can provide allies within 5ft a +1 power bonus to the next attack made against them."]
+				atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) {fields.Description += ' & allies within 5 ft get +1 to their next atk'; }; ", "Once on each of my turns when I hit a creature with my Signature Weapon, I can provide allies within 5ft a +1 power bonus to the next attack made against them."]
 			},
+			spellcastingBonus : {
+				name : "Inventive Measures",
+				spells : ["mending"],
+				selection : ["mending"],
+				atwill : true
+			}
 		},
 		"subclassfeature3" : {
 			name : "Loyal Construct",
-			source : ["HB: Artificer", 7],
+			source : ["HB: Artificer", 6],
 			minlevel : 2,
 			recovery : "short rest",
 			description : desc([
 				"I spend 8 hours and 25 GP to build a loyal construct",
 				"I can only have 1 loyal construct at a time",
-				"I can use my Infuse Object feature on my Loyal Construct"
+				"I can use my Infuse Magic feature on my Loyal Construct"
 			]),
 			additional : "1/4 CR up to medium sized beast",
 		},
 		"subclassfeature4" : {
 			name : "Reactionary Syntax",
-			source : ["HB: Artificer", 8],
+			source : ["HB: Artificer", 6],
 			minlevel : 5,
 			description : desc([
-				"If I use the Artificer's Weapon cantrip, my construct can use its reaction to make a melee attack"
+				"If I use my Signature Weapon to attack, my construct can use its reaction to make a melee attack"
 			]),
 		},
 		"subclassfeature5" : {
 			name : "Construct's Coating",
-			source : ["HB: Artificer", 8],
+			source : ["HB: Artificer", 6],
 			minlevel : 7,
 			description : desc([
 				"Your construct can be coated to gain resistance to an element during a long rest",
@@ -386,11 +510,10 @@ ClassSubList["inventor"] = {
 		},
 		"subclassfeature6" : {
 			name : "Construct Mode Change",
-			source : ["HB: Artificer", 8],
+			source : ["HB: Artificer", 6],
 			minlevel : 10,
 			description : desc([
 				"My construct can use its bonus action to enter a state for 1 minute",
-				"At 18th lvl, the modes last until a new mode is selected",
 				"See the \Notes\ Page for more details"
 			]),
 			eval : "AddString(\"Extra.Notes\", \"Construct Mode Change:\\n\\u25C6 Attack Mode\\n   My construct can attack recklessly.\\n  Attacks are made with advantage, but all attacks against construct have advantage.\\n\\u25C6 Defense Mode\\n  Creatures Construct hit with opportunity attacks have 0 speed for this turn. The Disengage action doesn't work on it. When a creature within 5 ft makes an attack against a target other than me, it can use it's reaction to make a melee weapon attack against the attacker.\\n\\u25C6 Support Mode\\n   Construct can take first aid action as a bonus action to stabilize a dying creature.\\n   I have adv on Wisdom (Medicine) checks while in line of sight of my construct.\", true);",
@@ -398,11 +521,11 @@ ClassSubList["inventor"] = {
 			action : ["bonus action", ""],
 			recovery : "long rest",
 			usagescalc : "event.value = Math.max(1, tDoc.getField(\"Con Mod\").value);",
-			usages: "Con mod per ",
+			usages: "Con mod per "
 		},
 		"subclassfeature7" : {
 			name : "Construct's Armored Defense",
-			source : ["HB: Artificer", 8],
+			source : ["HB: Artificer", 7],
 			minlevel : 17,
 			recovery : "long rest",
 			description : desc([
@@ -413,51 +536,58 @@ ClassSubList["inventor"] = {
 	}
 }
 
-//Subclass for Physician
-ClassSubList["physician"] = {
-	regExpSearch : /^(?=.*physician).*$/i,
-	subname : "Physician",
-	source : ["HB: Artificer", 5],
-	spellcastingExtra : ["healing word", "inflict wounds", "aid", "lesser restoration", "fear", "revivify", "mass healing word", "death ward", "polymorph", "contagion", "greater restoration"],
+//Subclass for Medicine
+ClassSubList["medicine"] = {
+	regExpSearch : /^(?=.*medicine).*$/i,
+	subname : "Study of Medicine",
+	source : ["HB: Artificer", 7],
+	spellcastingExtra : ["healing word", "inflict wounds", "aid", "gentle repose", "lesser restoration", "fear", "revivify", "mass healing word", "death ward", "polymorph", "contagion", "greater restoration"],
 	features : {
 		"subclassfeature1" : {
 			name : "Healing Master",
-			source : ["HB: Artificer", 5],
-			minlevel : 2,
+			source : ["HB: Artificer", 7],
+			minlevel : 3,
 			description : desc([
 				"Gain proficiency in Alchemist Supplies",
 				"If I already have Alchemist Supplies, I gain expertise"
 			]),
+			eval : "if (CurrentProfs.tool[\"Alchemist's supplies\"] && (/(alchemist|alchemy).*(supplies|kit)/i).test(What('Too Text'))) { Checkbox('Too Exp', true); }; ",
+			removeeval : "if (CurrentProfs.tool[\"Alchemist's supplies\"] && (/(alchemist|alchemy).*(supplies|kit)/i).test(What('Too Text'))) { Checkbox('Too Exp', false); }; "
 		},
 		"subclassfeature2" : {
 			name : "Field Medic",
 			source : ["HB: Artificer", 6],
-			minlevel : 2,
+			minlevel : 3,
 			description : desc([
 				"I can administer potions as a bonus action",
-				"If proficient in the Medicine Skill, I have adv. on Wisdom (Medicine) checks to stabilize allies and study ailments",
-				"My Artificer's Weapon cantrip now gives each adj ally a +1 to their AC"
+				"I gain proficiency in Medicine, or expertise if I already had",
+				"I have adv. on Wisdom (Medicine) checks to stabilize allies and study ailments",
+				"Attacking with my signature weapon now gives allies within 5 ft a +1 to their AC"
 			]),
 			action : ["bonus action", " (Administer Potion)"],
 			calcChanges : {
-				atkAdd : ["if (theWea && (/artificer's weapon/i).test(theWea.name)) {fields.Description += ' & allies within 5ft get +1 AC vs first atk made against them'; }; ", "Once on each of my turns when I hit a creature with my Artificer's Weapon cantrip, I can provide allies within 5ft a +1 power bonus to the next attack made against them."]
+				atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) {fields.Description += ' & allies within 5 ft get +1 AC vs first atk made against them'; }; ", "Once on each of my turns when I hit a creature with my Signature Weapon, I can provide allies within 5 ft a +1 power bonus to the next attack made against them."]
 			},
+			skills : "\n\n" + toUni("Study of Medicine") + ": Medicine, or expertise if already proficient.",
+			eval : "AddSkillProf('Med', true, 'increment')",
+			removeeval : "AddSkillProf('Med', false, 'increment')"
 		},
 		"subclassfeature3" : {
-			name : "Adrenaline Shot",
+			name : "Arcane Drain",
 			source : ["HB: Artificer", 6],
 			minlevel : 5,
-			recovery : "long rest",
+			recovery : "short rest",
 			usages : "Con mod per ",
 			usagescalc : "event.value = Math.max(1, tDoc.getField(\"Con Mod\").value);",
 			description : desc([
-				"When I use a support formula on an ally, they can instead take a +1 AC and temp HP equal to half my artificer's level + Int Mod",
-				"Recipient can expend the bonuses to activate actual effect of the formula",
-				"The booster lasts for 1 minute, if not expended before, the effects dissipate"
+				"When I attack with my Signature Weapon I can use my reaction",
+				"1 creature within 5 ft of the target of my attack regains temp HP",
+				"This Temp HP is equal to my Int Mod + Half Artificer level"
 			]),
+			action : ["reaction", " "],
 		},
 		"subclassfeature4" : {
-			name : "Patience is a Virtue",
+			name : "Convalescence",
 			source : ["HB: Artificer", 6],
 			minlevel : 7,
 			description : desc([
@@ -466,89 +596,90 @@ ClassSubList["physician"] = {
 			]),
 		},
 		"subclassfeature5" : {
-			name : "Innovative Formulas",
+			name : "Equilibrium",
 			source : ["HB: Artificer", 6],
 			minlevel : 10,
-			description : desc([
-				"Any healing spell I do heals additional hit points equal to my Int Mod",
-				"Any damage spells I do deal additional damage equal to my Int Mod"
-			]),
-		},
-		"subclassfeature6" : {
-			name : "Coalescence",
-			source : ["HB: Artificer", 6],
-			minlevel : 17,
 			usagescalc : "event.value = Math.max(1, tDoc.getField(\"Int Mod\").value);",
 			recovery : "long rest",
 			description : desc([
-				"Once per turn when I use a support formula I can use an offensive formula as a bonus action and vice versa",
-				"The bonus action spell can not be higher than 5th level"
+				"Once per turn when I use a formula that damages, I can heal that to an ally",
+				"Vice versa, once per turn when I heal an ally, I can take that respite and damage an enemy, Con saves",
+				"If a formula effects multiple targets, select one to take the healing or damage from."
+			]),
+			usages : "Int mod per ",
+			usagescalc : "event.value = Math.max(1, tDoc.getField(\"Int Mod\").value);",
+			recovery : "long rest",
+		},
+		"subclassfeature6" : {
+			name : "Innovative Formulas",
+			source : ["HB: Artificer", 6],
+			minlevel : 17,
+			description : desc([
+				"Any healing spell I do heals additional hit points equal to my Int Mod x Spell Slot",
+				"Any damage spells I do deal additional damage equal to my Int Mod x Spell Slot",
+				"I can only do this once per formula."
 			]),
 		}
 	}
 }
 
-//Subclass for Warsmith
-ClassSubList["warsmith"] = {
-	regExpSearch : /^(?=.*warsmith).*$/i,
-	subname : "Warsmith",
+//Subclass for Warsmithing
+ClassSubList["warsmithing"] = {
+	regExpSearch : /^(?=.*warsmithing).*$/i,
+	subname : "Study of Warsmithing",
 	source : ["HB: Artificer", 7],
 	spellcastingExtra : ["ensnaring strike", "thunderous smite", "wrathful smite", "branding smite", "cordon of arrows", "blinding smite", "flame arrows", "lightning arrow", "staggering smite", "mordenkainen's faithful hound", "banishing smite", "conjure volley"],
+	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 	features : {
 		"subclassfeature1" : {
 			name : "Smith Master",
-			source : ["HB: Artificer", 5],
-			minlevel : 2,
+			source : ["HB: Artificer", 7],
+			minlevel : 3,
 			description : desc([
 				"Gain proficiency in Smith's Tools",
 				"If I already have Smith's Tools, I gain expertise"
 			]),
+			eval : "if (CurrentProfs.tool[\"Smith's Tools\"] && (/(smith|smiths).*(tool|tools)/i).test(What('Too Text'))) { Checkbox('Too Exp', true); }; ",
+			removeeval : "if (CurrentProfs.tool[\"Smith's Tools\"] && (/smith|smiths).*(tool|tools)/i).test(What('Too Text'))) { Checkbox('Too Exp', false); }; "
 		},
 		"subclassfeature2" : {
 			name : "Analytical Warrior",
-			source : ["HB: Artificer", 6],
-			minlevel : 2,
+			source : ["HB: Artificer", 8],
+			minlevel : 3,
 			description : desc([
-				"I am proficient in heavy armor and martial weapons",
-				"My Artificer's Weapon cantrip now gives each adj ally a bonus to dmg equal to my Con Mod for their next 1st attack"
+				"I am proficient in heavy armor and shields",
+				"Attacking with my signature weapon now gives allies within 5 ft a dmg bonus equal to my Con mod for their next attack"
 			]),
-			armor : [false, false, true, false],
-			weapons : [false, true],
+			armor : [false, false, true, true],
 			calcChanges : {
-				atkAdd : ["if (theWea && (/artificer's weapon/i).test(theWea.name)) {fields.Description += ' & allies within 5ft get +' + What('Con Mod') + ' bonus to their next atk dmg'; }; ", "Once on each of my turns when I hit a creature with my Artificer's Weapon cantrip, I can provide allies within 5ft a +1 power bonus to the next attack made against them."]
+				atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) {fields.Description += ' & allies within 5 ft get +' + What('Con Mod') + ' bonus to their next atk dmg'; }; ", "Once on each of my turns when I hit a creature with my Signature Weapon, I can provide allies within 5 ft a +1 power bonus to the next attack's damage equal to my Con mod."]
 			}
 		},
 		"subclassfeature3" : {
-			name : "Signature Weapon",
-			source : ["HB: Artificer", 6],
+			name : "Extra Signature Weapon attack",
+			source : ["HB: Artificer", 8],
 			minlevel : 5,
-			recovery : "short rest",
 			description : desc([
-				"I craft a signature weapon only I can wield",
-				"It uses Intelligence for all attack and damage rolls and counts as magical",
-				"I can expend a 3rd lvl formula to make it a +1 for 8 hrs, a 5th lvl for +2 and 10 hrs or a 7th lvl for +3 that lasts til long rest",
-				"If broken or stolen I can make a new one w/ 8 hrs and 1 hit die"
-			]),
-			calcChanges : {
-				atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) { fields.Mod = What('Int Mod') > What(AbilityScores.abbreviations[fields.Mod - 1] + ' Mod') ? 4 : fields.Mod ; fields.Description += (fields.Description ? '; ' : '') + ', the atk is magical, and can be made into a +1/+2/+3 wpn'; }; ", "If I include the word 'Signature' in a weapon's name, it gets treated as my the weapon that is my signature weapon."]
-			},
+				"When I attack with my signature weapon, I can make an additional attack as part of the action",
+				"The additional effects of my signature weapon do not stack."
+			])
 		},
 		"subclassfeature4" : {
 			name : "Arcane Weapon",
 			source : ["HB: Artificer", 6],
 			minlevel : 7,
 			description : desc([
-				"As a bonus action I can add 1d10 elemental to my next attack",
+				"As a bonus action I can add 1d8 elemental to my next attack",
 				"I select from Acid, Cold, Fire, and Lightning at time",
-				"This increases to 2d10 at 11th level and 3d10 at 17th level"
+				"This increases to 2d8 at 11th level and 3d8 at 17th level"
 			]),
-			recovery : "long rest",
+			recovery : "short rest",
 			usages : "Con Mod per",
 			usagescalc : "event.value = Math.max(1, tDoc.getField(\"Con Mod\").value);",
 			action : ["bonus action", ""],
 			additional : levels.map(function (n) {
 				if (n < 7) return "";
-				return "+" + (n < 11 ? 1 : n < 17 ? 2 : 3) + "d10 elemental dmg";
+				return "+" + (n < 11 ? 1 : n < 17 ? 2 : 3) + "d8 elemental dmg";
 			}),
 		},
 		"subclassfeature5" : {
@@ -577,45 +708,12 @@ ClassSubList["warsmith"] = {
 				"My Signature Weapon now crits on a 19-20"
 			]),
 			calcChanges : {
-				atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) { var CritChance = 19; fields.Description += (fields.Description ? '; ' : '') + 'Crit on 19-20';"],
+				atkAdd : ["if ((/Signature/i).test(inputText) && ( isMeleeWeapon || isRangedWeapon )) {var CritChance = 19; fields.Description += (fields.Description ? '; ' : '') + 'Crit on 19-20'; };"],
 			},
 			dmgres : [["Acid", "Acid"], ["Cold", "Cold"], ["Fire", "Fire"], ["Lightning", "Lightning"]]
 		}
 	}
 }
-
-//Add Artificer's Weapon spell to the Spell List
-SpellsList["artificer's weapon"] = {
-	name : "Artificer's Weapon",
-	classes : ["artificer"],
-	source : ["HB: Artificer", 11],
-	level : 0,
-	school : "Ench",
-	time : "1 a",
-	range : "weapon",
-	components : "V, M",
-	compMaterial : "A weapon",
-	duration : "Instantaneous",
-	description : "1 crea takes magic weapon damage; +1d8 at CL 5, 11, and 17",
-	descriptionFull : "Your weapon is infused with arcane energy.  Make a melee or range attack with a weapon against one creature. The weapon's attack is considered magical for the sake of getting passed resistances.  The spell’s damage deals additional thunder damage at 5th level (1d8), 11th level (2d8), and 17th level (3d8), and the damage type is thunder."
-};
-
-// Add weapons (attack cantrips)
-WeaponsList["artificer's weapon"] = {
-	regExpSearch : /^(?=.*artificer's)(?=.*weapon).*$/i,
-	name : "Artificer's Weapon",
-	source : ["HB: Artificer", 11],
-	list : "spell",
-	ability : 4,
-	type : "Cantrip",
-	damage : ["Bd8", "", "thunder"],
-	range : "With weapon",
-	description : "You deal additional Thunder dmg",
-	abilitytodamage : false
-};
-
-UpdateDropdown("weapon");
-UpdateDropdown("spells");
 
 //add the source
 SourceList["HB: Artificer"] = {
